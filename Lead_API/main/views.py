@@ -9,7 +9,21 @@ class UTF8JsonResponse(JsonResponse):
         super().__init__(*args, json_dumps_params=json_dumps_params, **kwargs)
 
 
-def all_data(request):
-	with open('/Users/ilya/Documents/GitHub/leaders2022/Lead_API/objects_dataset.json', encoding="utf-8") as json_file:
+def pull_data(path_file: str):
+	with open(path_file, encoding="utf-8") as json_file:
 		data = json.load(json_file)
-		return UTF8JsonResponse(data)
+		return data
+
+
+def all_data(request):
+	data = pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/objects_dataset.json")
+	return UTF8JsonResponse(data)
+
+
+def filter_data(request):
+	p_type = request.GET.get("p_type")
+	
+	data = pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/objects_dataset.json")
+	filtered_data = [k for k in data['features'] if k["properties"]["type"] == p_type]
+	geo_json_data = {"type": "FeatureCollection", "features": filtered_data}
+	return UTF8JsonResponse(geo_json_data) 

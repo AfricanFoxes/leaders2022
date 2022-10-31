@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./assets/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- LEAFLET -->
+    <link rel="stylesheet" href="//unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+    <script src="//unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+    
+    <!-- LEAFLET DRAW -->
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.js"></script>
+    
+    <!-- TURF JS -->
+    <script src="//cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+    
+    <!-- JQUERY -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- JQUERY DATATABLES CSS -->
+    <link rel="stylesheet" href="src/utils/datatables-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="src/utils/datatables-responsive/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" href="src/utils/datatables-buttons/css/buttons.bootstrap4.min.css" />
+
+    <!-- JQUERY DATATABLES MAIN -->
+    <script src="src/utils/datatables/jquery.dataTables.min.js"></script>
+    <script src="src/utils/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="src/utils/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="src/utils/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="src/utils/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="src/utils/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+
+    <!-- JQUERY DATATABLES BUTTONS -->
+    <script src="src/utils/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="src/utils/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="src/utils/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <!-- SWEET ALERT -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- LEAFLET CUSTOM LAYER -->
+    <!-- <script type="text/javascript" src="https://unpkg.com/leaflet-customlayer@2.1.0/dist/Leaflet.CustomLayer.js"></script> -->
+
+    <!-- LEAFLET MARKET CLUSTER -->
+    <link rel="stylesheet" href="src/utils/marker-cluster/MarkerCluster.css" />
+    <link rel="stylesheet" href="src/utils/marker-cluster/MarkerCluster.Default.css" />
+    <script src="src/utils/marker-cluster/leaflet.markercluster-src.js"></script>
+
+    <title>Construction Map</title>
+  </head>
+  <body>
+    <!-- CONTAINER FOR VUE -->
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

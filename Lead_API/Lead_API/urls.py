@@ -24,4 +24,5 @@ urlpatterns = [
     path('api/regions', get_all_regions, name="regions"),
     path('api/region', get_region, name="region"),
     path('api/predictions', get_all_predictions, name="predictions"),
+    path('api/objects/typed', get_all_typed_objects, name="typed")
 ]

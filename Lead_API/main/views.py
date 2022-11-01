@@ -20,6 +20,22 @@ def get_all_objects(request):
 	return UTF8JsonResponse(data)
 
 
+def get_all_typed_objects(request):
+	data = _pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/objects_dataset.json")
+	geo_json_data = []
+	types = []
+
+	for i in data['features']:
+		if i["properties"]["type"] not in types:
+			types.append(i["properties"]["type"])
+
+	for i in types:
+		filtered_data = [k for k in data['features'] if k["properties"]["type"] == i]
+		geo_json_data.append({"type": "FeatureCollection", "features": filtered_data})
+
+	return UTF8JsonResponse({"context": geo_json_data})
+
+
 def get_object(request):
 	p_type = request.GET.get("p_type")
 	

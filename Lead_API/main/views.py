@@ -9,21 +9,40 @@ class UTF8JsonResponse(JsonResponse):
         super().__init__(*args, json_dumps_params=json_dumps_params, **kwargs)
 
 
-def pull_data(path_file: str):
+def _pull_data(path_file: str):
 	with open(path_file, encoding="utf-8") as json_file:
 		data = json.load(json_file)
 		return data
 
 
-def all_data(request):
-	data = pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/objects_dataset.json")
+def get_all_objects(request):
+	data = _pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/objects_dataset.json")
 	return UTF8JsonResponse(data)
 
 
-def filter_data(request):
+def get_object(request):
 	p_type = request.GET.get("p_type")
 	
-	data = pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/objects_dataset.json")
+	data = _pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/objects_dataset.json")
 	filtered_data = [k for k in data['features'] if k["properties"]["type"] == p_type]
 	geo_json_data = {"type": "FeatureCollection", "features": filtered_data}
 	return UTF8JsonResponse(geo_json_data) 
+
+
+def get_all_regions(request):
+	data = _pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/region.json")
+	return UTF8JsonResponse(data)
+
+
+def get_region(request):
+	r_name = request.GET.get("r_name")
+
+	data = _pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/region.json")
+	filtered_data = [k for k in data['features'] if k["properties"]["NAME"] == r_name]
+	geo_json_data = {"type": "FeatureCollection", "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }}, "features": filtered_data}
+	return UTF8JsonResponse(geo_json_data)
+
+
+def get_all_predictions(request):
+	data = _pull_data("/Users/ilya/Documents/GitHub/leaders2022/Lead_API/predict_postamats.json")
+	return UTF8JsonResponse(data)

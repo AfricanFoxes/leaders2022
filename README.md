@@ -1,4 +1,9 @@
 # leaders2022
 
-api/
-api2?p_type=VALUE
+## pathes:
+
+api/objects
+api/object?p_name=name
+api/regions
+api/region?r_name=name
+api/predictions

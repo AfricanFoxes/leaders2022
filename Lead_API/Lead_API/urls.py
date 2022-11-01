@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from main.views import all_data, filter_data
+from main.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', all_data, name="api"),
-    path('api2/', filter_data, name="type"),
+    path('api/objects', get_all_objects, name="objects"),
+    path('api/object', get_object, name="object"),
+    path('api/regions', get_all_regions, name="regions"),
+    path('api/region', get_region, name="region"),
+    path('api/predictions', get_all_predictions, name="predictions"),
 ]

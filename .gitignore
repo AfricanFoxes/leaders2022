@@ -128,3 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 Lead_API/objects_dataset.json
+Lead_API/region.json
+Lead_API/predict_postamats.json

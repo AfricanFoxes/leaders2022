@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from main.views import object_api, region_api
+from main.views import object_api, region_api, get_all_typed_objects
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/objects/', object_api),
     path('api/regions/', region_api),
+    path('api/objects/typed/', get_all_typed_objects)
 ]

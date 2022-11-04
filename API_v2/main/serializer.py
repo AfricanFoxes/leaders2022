@@ -3,20 +3,21 @@ from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
-from .models import PObject, Region
-
-
-# class PObjectSerializer(serializers.ModelSerializer):
-
-#     class Meta:
-#         model = PObject
-#         fields = "__all__"
+from .models import PObject, Region, PredictObject
 
 
 class PObjectSerializer(GeoFeatureModelSerializer):
 
     class Meta:
         model = PObject
+        geo_field = "geometry"
+        fields = "__all__"
+
+
+class PredictObjectSerializer(GeoFeatureModelSerializer):
+
+    class Meta:
+        model = PredictObject
         geo_field = "geometry"
         fields = "__all__"
 

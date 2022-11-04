@@ -34,12 +34,15 @@ def compare2():
 	a = []
 	b = []
 	for i in data["features"]:
-		a.append((i["properties"]["lon"], i["properties"]["lat"]))
+		a.append((i["properties"]["lon"], i["properties"]["lat"], i["properties"]["normalize_name"]))
+		# a.append(i["properties"]["normalize_name"])
 	for i in data2["features"]:
-		b.append((i["properties"]["lon"], i["properties"]["lat"]))
+		b.append((i["properties"]["lon"], i["properties"]["lat"], i["properties"]["normalize_name"]))
+		# b.append(i["properties"]["normalize_name"])
 
 	dif = list(set(b) - set(a))
-	return dif
+	for i in dif:
+		print(f"{i}: {len(i[2])}")
 
 
 def compare3():

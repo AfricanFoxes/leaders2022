@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from main.views import object_api, region_api, get_all_typed_objects
+from main.views import object_api, region_api, get_all_typed_objects, predict_object_api, \
+                       get_regions_objects, get_items_by_radius
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/objects/', object_api),
+    path('api/predictions/', predict_object_api),
     path('api/regions/', region_api),
-    path('api/objects/typed/', get_all_typed_objects)
+    path('api/objects/typed/', get_all_typed_objects),
+    path('api/objects/inregion/', get_regions_objects),
+    path('api/objects/byradius/', get_items_by_radius),
 ]

@@ -36,6 +36,21 @@ def push_o():
 			print(i["properties"]["name"])
 
 
+def push_po():
+	data = pull("/Users/ilya/Desktop/predict_postamats.json")
+	headers = {'Content-Type': "application/json", 'Accept': "application/json"}
+
+	# dif = compare2()
+	for i in data["features"]:
+		# if (i["properties"]["lon"], i["properties"]["lat"]) in dif:
+		body = i["properties"]
+		body["geometry"] = i["geometry"]
+		response = requests.post('http://127.0.0.1:8000/api/predictions/', json=body, headers=headers)
+		# print(i["properties"]["name"])
+		print(response.reason)
+		input()
+
+
 def push_r():
 	data = pull("/Users/ilya/Desktop/region.json")
 	headers = {'Content-Type': "application/json", 'Accept': "application/json"}
@@ -51,4 +66,4 @@ def push_r():
 
 
 if __name__ == '__main__':
-	push_o()
+	push_po()

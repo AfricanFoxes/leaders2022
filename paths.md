@@ -11,10 +11,10 @@
 2. api/regions/?r_name=NAME
 
 Выдает все объекты, отсортированные по типам.
-api/objects/typed/
+1. api/objects/typed/
 
 Выдает все объекты, входящие в регион по okato.
-api/objects/inregion/?r_name=NAME
+1. api/objects/inregion/?r_name=NAME
 
 выдает все объекты, входящие в окружность.
-api/objects/byradius/?lon=lon&lat=lat&radius=radius
+1. api/objects/byradius/?lon=lon&lat=lat&radius=radius

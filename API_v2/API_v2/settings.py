@@ -25,7 +25,7 @@ SECRET_KEY = 'mfkq*gumq^%qdy7qsf81d%^un&w2i+x=uh*rrr1yz*g&$i6op)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -99,6 +99,8 @@ DATABASES = {
     }
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -147,3 +149,20 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8081',
 )
+
+ENVIRONMENT = "no_production"
+
+if ENVIRONMENT == 'production':
+    DEBUG = False
+    SECRET_KEY = 'mfkq*gumq^%qdy7qsf81d%^un&w2i+x=uh*rrr1yz*g&$i6op)'
+    # os.getenv('SECRET_KEY')
+    SESSION_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_REDIRECT_EXEMPT = []
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_PRELOAD = True #
+    CSRF_COOKIE_SECURE = True #
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

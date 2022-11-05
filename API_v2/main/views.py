@@ -127,3 +127,22 @@ def get_items_by_radius(request):
     print(len(list(data)))
     # print(snippets[(snippets.lat >= min_lat)&(snippets.lat <= max_lat)&(snippets.lon >= min_lon)&(snippets.lon <= max_lon)])
     return UTF8JsonResponse(serializer.data, safe=False)
+
+
+def get_filtered_objects(request):
+	ensemble_predict = float(request.GET.get("ensemble_predict"))
+	count = int(request.GET.get("count"))
+	covering_postamats = int(request.GET.get("postamats"))
+	po_type = request.GET.get("type").split(',')
+	pop = int(request.GET.get("pop"))
+
+	snippets = PredictObject.objects.filter(
+		ensemble_predict__gte=ensemble_predict, 
+		covering_postamats__lte=covering_postamats, 
+		type__in=po_type, 
+		population_house_living_square__gte=pop).order_by('-ensemble_predict')[:count]
+
+	serializer = PredictObjectSerializer(snippets, many=True)
+	return UTF8JsonResponse(serializer.data, safe=False)
+
+

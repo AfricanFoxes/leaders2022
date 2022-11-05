@@ -14,3 +14,5 @@ django-geojson==4.0.0
 django-filter==21.1
 django-contrib-comments==2.2.0
 django-cors-headers==3.7.0
+django-leaflet
+psycopg2-binary

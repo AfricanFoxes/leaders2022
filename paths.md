@@ -18,3 +18,6 @@
 
 выдает все объекты, входящие в окружность.
 1. api/objects/byradius/?lon=lon&lat=lat&radius=radius
+
+
+1. api/objects/filtered/?ensemble_predict=0.5&count=5&pop=1000&postamats=20&type=Библиотека,...,

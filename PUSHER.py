@@ -27,43 +27,51 @@ def push_o():
 	data = pull("/Users/ilya/Desktop/objects_dataset.json")
 	headers = {'Content-Type': "application/json", 'Accept': "application/json"}
 
-	dif = compare2()
-	for i in data["features"]:
-		if (i["properties"]["lon"], i["properties"]["lat"]) in dif:
-			body = i["properties"]
-			body["geometry"] = i["geometry"]
-			response = requests.post('http://127.0.0.1:8000/api/objects/', json=body, headers=headers)
-			print(i["properties"]["name"])
-
-
-def push_po():
-	data = pull("/Users/ilya/Desktop/predict_postamats.json")
-	headers = {'Content-Type': "application/json", 'Accept': "application/json"}
-
+	c = 0
 	# dif = compare2()
 	for i in data["features"]:
 		# if (i["properties"]["lon"], i["properties"]["lat"]) in dif:
 		body = i["properties"]
 		body["geometry"] = i["geometry"]
-		response = requests.post('http://127.0.0.1:8000/api/predictions/', json=body, headers=headers)
+		response = requests.post('http://151.248.118.148/api/objects/', json=body, headers=headers)
+		c += 1
+		print(i["properties"]["name"])
+	print(c)
+
+def push_po():
+	data = pull("/Users/ilya/Desktop/predict_objects.json")
+	headers = {'Content-Type': "application/json", 'Accept': "application/json"}
+
+	# dif = compare2()
+	c = 0
+	for i in data["features"]:
+		# if (i["properties"]["lon"], i["properties"]["lat"]) in dif:
+		body = i["properties"]
+		body["geometry"] = i["geometry"]
+		response = requests.post('http://151.248.118.148/api/predictions/', json=body, headers=headers)
 		# print(i["properties"]["name"])
+		c += 1
 		print(response.reason)
-		input()
+		# input()
+	print(c)
 
 
 def push_r():
 	data = pull("/Users/ilya/Desktop/region.json")
 	headers = {'Content-Type': "application/json", 'Accept': "application/json"}
 
+	c = 0
 	for i in data["features"]:
 		body = i["properties"]
 		body["geometry"] = i["geometry"]
-		response = requests.post('http://127.0.0.1:8000/api/regions/', json=body, headers=headers)
+		response = requests.post('http://151.248.118.148/api/regions/', json=body, headers=headers)
 		if response.status_code != 200:
 			print(i)
 			print(response.raise_for_status)
 			input()
+		c += 1
+	print(c)
 
 
 if __name__ == '__main__':
-	push_po()
+	push_o()

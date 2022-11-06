@@ -1,5 +1,5 @@
 from django.db import models
-from djgeojson.fields import PointField, MultiPolygonField
+from djgeojson.fields import PointField, MultiPolygonField, PolygonField
 # from django.contrib.gis.db import model
 
 
@@ -114,6 +114,90 @@ class PredictObject(models.Model):
 	hist_gradient_predict = models.FloatField()
 	ensemble_predict = models.FloatField()
 	geometry = PointField()
+
+	def __str__(self):
+		return self.name
+
+
+class PredictHexagon(models.Model):
+	type = models.CharField(max_length=50, verbose_name="type")
+	name = models.CharField(max_length=200)
+	geometry_name = models.CharField(max_length=200, null=True, blank=True)
+	lon = models.FloatField()
+	lat = models.FloatField()
+	K_distance = models.FloatField()
+	distance_to_center = models.FloatField()
+
+	count_nearest_postamats = models.IntegerField()
+	# count_nearest_postamats_2km = models.IntegerField()
+	count_nearest_pvz = models.IntegerField()
+	count_nearest_pvz_shop = models.IntegerField()
+	food_delivery = models.IntegerField()
+	velo_parking = models.IntegerField()
+	digitalization = models.FloatField()
+	digitalization_without_postamat = models.FloatField()
+	covering_postamats = models.IntegerField()
+
+	normalize_name = models.CharField(max_length=200)
+	okato = models.BigIntegerField()
+	prc_children_1_6 = models.FloatField()
+	count_nearest_metro = models.IntegerField()
+	count_nearest_ngpt = models.IntegerField()
+	count_nearest_auto_parking = models.IntegerField()
+	transportization = models.FloatField()
+	level_working_region = models.IntegerField()
+	level_sleeping_region = models.IntegerField()
+	count_house_flat = models.IntegerField()
+	population_house_flat = models.IntegerField()
+	population_house_square = models.IntegerField()
+	population_house_living_square = models.IntegerField()
+	count_nearest_postamats_x2 = models.IntegerField()
+	count_nearest_postamats_x3 = models.IntegerField()
+	level_sleep_work_region = models.FloatField()
+	# count_house_flat_400 = models.IntegerField()
+	# population_house_flat_400 = models.IntegerField()
+	# population_house_square_400 = models.IntegerField()
+	# population_house_living_square_400 = models.IntegerField()
+	# count_house_flat_200 = models.IntegerField()
+	# population_house_flat_200 = models.IntegerField()
+	# population_house_square_200 = models.IntegerField()
+	# population_house_living_square_200 = models.IntegerField()
+	region_average_age = models.FloatField()
+	region_population = models.IntegerField()
+	average_salary = models.IntegerField()
+	average_employees = models.IntegerField()
+	prc_employees_small_businesses = models.FloatField()
+	count_small_enterprises = models.IntegerField()
+	investments = models.IntegerField()
+	price_metr_housing = models.IntegerField()
+	cost_apartment = models.IntegerField()
+	rating_ecology = models.IntegerField()
+	entertainment_infrastructure = models.IntegerField()
+	house_infrastructure_rating = models.IntegerField()
+	prc_xenophobic = models.FloatField()
+	area_per_human_region = models.FloatField()
+	population_density_region = models.FloatField()
+	population_region = models.IntegerField()
+	prc_people_higher_education = models.FloatField()
+	death_rate = models.FloatField()
+	total_fertility_rate = models.FloatField()
+	# prc_children = models.FloatField()
+	prc_children_5_18 = models.FloatField()
+	migration_population_growth = models.FloatField()
+	natural_population_growth = models.FloatField()
+	budget_expenditures = models.IntegerField()
+	budget_revenues = models.IntegerField()
+	tf_predict = models.FloatField()
+	gradient_predict = models.FloatField()
+	decis_predict = models.FloatField()
+	forest_predict = models.FloatField()
+	extra_predict = models.FloatField()
+	logler_predict = models.FloatField()
+	hist_gradient_predict = models.FloatField()
+	calibrated_forest_predict = models.FloatField(null=True)
+	ensemble_predict = models.FloatField()
+	tf_predict = models.FloatField()
+	geometry = PolygonField()
 
 	def __str__(self):
 		return self.name

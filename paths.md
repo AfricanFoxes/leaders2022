@@ -16,8 +16,11 @@
 Выдает все объекты, входящие в регион по okato.
 1. api/objects/inregion/?r_name=NAME
 
-выдает все объекты, входящие в окружность.
+Выдает все объекты, входящие в окружность.
 1. api/objects/byradius/?lon=lon&lat=lat&radius=radius
 
-
+Выдает топ объектов, по фильтрам.
 1. api/objects/filtered/?ensemble_predict=0.5&count=5&pop=1000&postamats=20&type=Библиотека,...,
+
+Выдает гексагоны определенного уровня: 7, 8, 9. При параметре heatmap=yes выдает только координаты и модели.
+1. api/hexagon/?h_type=Hexagon_7&heatmap=yes

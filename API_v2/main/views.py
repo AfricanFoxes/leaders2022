@@ -1,6 +1,7 @@
-from .models import PObject, Region, PredictObject
-from .serializer import PObjectSerializer, RegionSerializer, PredictObjectSerializer
-from django.http import JsonResponse
+from .models import PObject, Region, PredictObject, PredictHexagon
+from .serializer import PObjectSerializer, RegionSerializer, PredictObjectSerializer, \
+						PredictHexagonSerializer, PredictHexagonHEATMAPSerializer
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.core.exceptions import ValidationError
@@ -51,6 +52,31 @@ def predict_object_api(request):
 	# 	if serializer.is_valid():
 	# 		serializer.save()
 	# 		return UTF8JsonResponse(serializer.data)
+	# 	return UTF8JsonResponse(serializer.errors)
+
+
+@csrf_exempt
+def predict_hexagon_api(request):
+	if request.method == "GET":
+		h_type = request.GET.get("h_type")
+		snippets = PredictHexagon.objects.filter(type=h_type)
+		if request.GET.get("heatmap") == "yes":
+			serializer = PredictHexagonHEATMAPSerializer(snippets, many=True)
+			return UTF8JsonResponse(serializer.data, safe=False)
+		serializer = PredictHexagonSerializer(snippets, many=True)
+		return UTF8JsonResponse(serializer.data, safe=False)
+
+		snippets = PredictHexagon.objects.all()
+		serializer = PredictHexagonSerializer(snippets, many=True)
+		return UTF8JsonResponse(serializer.data, safe=False)
+
+	# elif request.method == "POST":
+	# 	data = JSONParser().parse(request)
+	# 	serializer = PredictHexagonSerializer(data=data)
+	# 	if serializer.is_valid():
+	# 		serializer.save()
+	# 		return UTF8JsonResponse(serializer.data)
+	# 	print(serializer.errors)
 	# 	return UTF8JsonResponse(serializer.errors)
 
 
@@ -146,3 +172,34 @@ def get_filtered_objects(request):
 	return UTF8JsonResponse(serializer.data, safe=False)
 
 
+# def delete_all_predictions(request):
+    
+#     #deletes all objects from Car database table
+#     PredictHexagon.objects.all().delete()
+        
+#     return UTF8JsonResponse({"Q": "Q"}, safe=False)
+
+text = """
+Выдает 1 - все объекты, 2 - объекты определенного типа.
+<p>1. api/objects/</p>
+<p>2. api/objects/?o_type=type</p>
+<p>Выдает 1 - все объекты, 2 - объекты определенного типа.</p>
+<p>1. api/predictions/</p>
+<p>2. api/predictions/?po_type=type</p>
+<p>Выдает 1 - все регионы, 2 - регион.</p>
+<p>1. api/regions/</p>
+<p>2. api/regions/?r_name=NAME</p>
+<p>Выдает все объекты, отсортированные по типам.</p>
+<p>1. api/objects/typed/</p>
+<p>Выдает все объекты, входящие в регион по okato.</p>
+<p>1. api/objects/inregion/?r_name=NAME</p>
+<p>Выдает все объекты, входящие в окружность.</p>
+<p>1. api/objects/byradius/?lon=lon&lat=lat&radius=radius</p>
+<p>Выдает топ объектов, по фильтрам.</p>
+<p>1. api/objects/filtered/?ensemble_predict=0.5&count=5&pop=1000&postamats=20&type=Библиотека,...,</p>
+<p>Выдает гексагоны определенного уровня: 7, 8, 9. При параметре heatmap=yes выдает только координаты и модели.</p>
+<p>1. api/hexagon/?h_type=Hexagon_7&heatmap=yes</p>
+"""
+
+def index(request):
+	return HttpResponse(text)

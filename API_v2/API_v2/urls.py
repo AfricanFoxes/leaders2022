@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from main.views import object_api, region_api, get_all_typed_objects, predict_object_api, \
-                       get_regions_objects, get_items_by_radius, get_filtered_objects
+                       get_regions_objects, get_items_by_radius, get_filtered_objects, \
+                       predict_hexagon_api, index
 
 
 urlpatterns = [
@@ -27,5 +28,8 @@ urlpatterns = [
     path('api/objects/typed/', get_all_typed_objects),
     path('api/objects/inregion/', get_regions_objects),
     path('api/objects/byradius/', get_items_by_radius),
-    path('api/objects/filtered/', get_filtered_objects)
+    path('api/objects/filtered/', get_filtered_objects),
+    path('api/hexagon/', predict_hexagon_api),
+    path('', index),
+    # path('api/del/', delete_all_predictions)
 ]

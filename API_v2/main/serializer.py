@@ -3,7 +3,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
-from .models import PObject, Region, PredictObject
+from .models import PObject, Region, PredictObject, PredictHexagon
 
 
 class PObjectSerializer(GeoFeatureModelSerializer):
@@ -20,6 +20,22 @@ class PredictObjectSerializer(GeoFeatureModelSerializer):
         model = PredictObject
         geo_field = "geometry"
         fields = "__all__"
+
+
+class PredictHexagonSerializer(GeoFeatureModelSerializer):
+
+    class Meta:
+        model = PredictHexagon
+        geo_field = "geometry"
+        fields = "__all__"
+
+
+class PredictHexagonHEATMAPSerializer(GeoFeatureModelSerializer):
+
+    class Meta:
+        model = PredictHexagon
+        geo_field = "geometry"
+        fields = ("lon", "lat", "ensemble_predict", "forest_predict")
 
 
 class RegionSerializer(GeoFeatureModelSerializer):

@@ -1,0 +1,76 @@
+Выгрузка районов и объектов
+Районов: 118 записей, 28 параметров
+Объектов: 24301 записей, 30 параметров
+
+
+Районы (оптимальная геометрия):
+list_parametr: ['NAME', 'OSM_ID', 'oktmo', 'okato', 'geometry', 'normalize_name','region_average_age', 'region_population', 'average_salary','average_employees', 'prc_employees_small_businesses','count_small_enterprises', 'investments', 'price_metr_housing','cost_apartment', 'rating_ecology', 'entertainment_infrastructure','house_infrastructure_rating', 'prc_xenophobic','area_per_human_region', 'population_density_region','population_region', 'prc_people_higher_education', 'death_rate','total_fertility_rate', 'prc_children', 'budget_expenditures','budget_revenues']
+
+'NAME', - Полное название района (красивое)
+'normalize_name',  - нормализованое название района (нижний регистр без лишних слов, использовался для мержинга)
+'OSM_ID', - id по OpenStreetMap
+'oktmo', - код района по ОКТМО 
+'okato', - код района по ОКАТО
+'geometry', - полигон района
+'region_average_age', -  средний возраст (здесь и далее использовался: russia.duck.consulting/maps/334/2010)
+'region_population'  - Численность населения района
+'average_salary'  - Средняя зарплата
+'average_employees'  - Среднесписочная численность работников
+'prc_employees_small_businesses'  - Процент работающих в малом и среднем бизнесе
+'count_small_enterprises'  - Количество малых и средних предприятий
+'investments'  - Инвестиции в основной капитал
+'price_metr_housing'  - Цена за квадратный метр жилья: медианная
+'cost_apartment'  - Стоимость съема квартиры
+'rating_ecology'  - Рейтинг районов по экологии
+'entertainment_infrastructure'  - Рейтинг развлекательной инфраструктуры района
+'house_infrastructure_rating'  - Рейтинг жилой инфраструктуры
+'prc_xenophobic'  - Процент арендотателей-ксенофобов. Ксенофо́бия — нетерпимость к кому-либо или чему-либо чужому, незнакомому, непривычному; восприятие чужого как неприятного и опасного 
+'area_per_human_region'  - Площадь жилых помещений на 1 жителя
+'population_density_region'  - Плотность населения
+'population_region'  - Численность населения
+'prc_people_higher_education'  - Процент людей с высшим образованием (также над к уровню цифровизации добавлять)
+'death_rate'  - Общий коэффициент смертности
+'total_fertility_rate'  - Общий коэффициент рождаемости
+'prc_children'  - Доля детей 5–18 лет
+'budget_expenditures'  - Расходы местного бюджета
+'budget_revenues'  - Доходы местного бюджета
+
+
+Объекты:
+list_parametr: ['index','type', 'name', 'geometry_name', 'lon', 'lat','count_nearest_postamats', 'count_nearest_pvz', 'food_delivery','digitalization', 'covering_postamats', 'normalize_name', 'okato','count_nearest_metro', 'level_working_region', 'level_sleeping_region','population_house_flat', 'population_house_square','population_house_living_square', 'geometry']
+'type'  - Тип (сейчас присутствую 'ПВЗ', 'Постамат', 'МФЦ')
+'name'  - наименование из 2ГИС
+'index' - номер из 2ГИС выгрузки
+'geometry_name'  - адрес 
+'lon', 'lat'  - координаты
+'normalize_name'  - название района (далее все показатели отнсятся к району где расположен текущий объект)
+'okato' - код муниципального района по которому производится связка объекта с районом
+'count_nearest_postamats'  - кол-во постаматов конкурентов в радиусе (радиус 1 км, но пока не постаматы учитывались)
+'count_nearest_pvz'  - кол-во ПВЗ конкурентов в радиусе
+'food_delivery'  - кол-во мест размещения иных интернето-зависимых услуг (по умолчанию 0 пока)
+'digitalization'  - Уровень цифровизации (пока считаю как взвешанная сумма предыдущих трех показателей)
+'covering_postamats'  - Уровень покрытия постаматами конкурентов (сумма постаматов в радиусе + ПВЗ)
+'count_nearest_metro', - Кол-во ближайших станций метро в радиусе 2км - может такое быть что нет рядом метро, ну чтож плохо
+'level_working_region' - Численная мера уровня "рабочего" района, где располагается объект (необходимо сравнивать с level_sleeping_region уровнем "спальным" района)
+'level_sleeping_region'- Численная мера уровня "спального" района, где располагается объект (необходимо сравнивать с level_working_region уровнем "рабочего" района)
+
+'count_house_flat' - кол-во жилых квартир в радиусе 1км от объекта
+'population_house_flat' - плотность население в радиусе 1км от объекта рассчитаная на основе кол-ва квартир (взят коэффициент 3.2 человека на квартиру)
+'population_house_square' - плотность население в радиусе 1км от объекта рассчитаная на основе общей площади квартир (взят коэффициент 22 кв.м. на человека)
+'population_house_living_square' - плотность население в радиусе 1км от объекта рассчитаная на основе жилой площади квартир (взят коэффициент 22 кв.м. на человека)
+
+'count_house_flat_200' - кол-во жилых квартир в радиусе 200м от объекта
+'population_house_flat_200' - плотность население в радиусе 200м от объекта рассчитаная на основе кол-ва квартир (взят коэффициент 3.2 человека на квартиру)
+'population_house_square_200' - плотность население в радиусе 200м от объекта рассчитаная на основе общей площади квартир (взят коэффициент 22 кв.м. на человека)
+'population_house_living_square_200' - плотность население в радиусе 200м от объекта рассчитаная на основе жилой площади квартир (взят коэффициент 22 кв.м. на человека)
+
+'count_house_flat_400' - кол-во жилых квартир в радиусе 400м от объекта
+'population_house_flat_400' - плотность население в радиусе 400м от объекта рассчитаная на основе кол-ва квартир (взят коэффициент 3.2 человека на квартиру)
+'population_house_square_400' - плотность население в радиусе 400м от объекта рассчитаная на основе общей площади квартир (взят коэффициент 22 кв.м. на человека)
+'population_house_living_square_400' - плотность население в радиусе 400м от объекта рассчитаная на основе жилой площади квартир (взят коэффициент 22 кв.м. на человека)
+
+'prc_of_russians'  - Процент русских в районе
+'geometry' - геометрия для GeoJSON - по сути просто точка
+'distance_to_center' - расстояние до центра города
+
+Аккуратно изменилось название в одном поле, было  region_avArage_age стало region_avErage_age

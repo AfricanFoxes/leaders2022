@@ -1,4 +1,5 @@
-# Front 
+# Used library 
+## Front 
 <ul>
 <li>Vue</li>
 <li>Vite</li>
@@ -10,7 +11,7 @@
 <li>rbush</li>
 </ul>
 
-# Backend
+## Backend
 <ul>
 <li>Node.js</li>
 <li>Express</li>
@@ -18,11 +19,13 @@
 <li>body-parser</li>
 </ul>
 
-# ML model
+## ML model
 <ul>
 <li>Python</li>
 <li>Pandas</li>
 <li>GeoPandas</li>
 <li>TensorFlow</li>
 <li>Scikitlearn</li>
+<li>Numpy</li>
+<li>re</li>
 </ul>

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  font-family: 'Montserrat' ,sans-serif;
+  /* overflow: hidden; */
+}
+
+html {
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+body {
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+#app {
+  height: 100%;
+  overflow: hidden;
+}
+
+#content-wrapper {
+  height: 100%;
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 100%;
+  overflow: hidden;
+}
+
+/* WRAPPER DIV FOR SIDEMENU */
+.menu {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
+  border-right: 1px solid black;
+}
+
+.menu-wrapper {
+  display: grid;
+  height: 30%;
+  width: 100%;
+  position: relative;
+}
+
+.menu-wrapper a {
+  display: grid;
+  color: #fff;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  
+  background-color: rgb(255, 255, 255);
+  transition: all 0.2s ease;
+}
+
+.menu a:hover {
+  background-color: rgb(226, 226, 226);
+  transition: all 0.2s ease;
+}
+
+/* WRAPPER DIV FOR EVERY PAGE */
+#wrapper {
+  padding: 3% 5% 5% 5%;
+}
+
+.nav-icon {
+  height: 30px;
+}
+
+.router-link-exact-active {
+  background-color: rgb(226, 226, 226);
+}
+
+.leaflet-control-attribution a {
+  display: none; 
+}
+
+.page-title-container {
+  position: absolute;
+  max-width: 100%;
+  bottom: 5%;
+}
+
+#page-title {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-family: 'Montserrat' ,sans-serif;
+
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  transform: rotate(-90deg);
+}
+
+#created-table,
+#generated-table {
+  min-width: 200px;
+  min-height: 100px;
+}
+
+#popup-content label {
+  margin-right: -5%;
+}
+
+#popup-content input {
+  max-width: 100%;
+  padding-left: 2%;
+}
+
+#popup-content textarea {
+  min-width: 100%;
+  padding-left: 2%;
+}
+
+#popup-content textarea {
+  min-height: 110px;
+  resize: none;
+}

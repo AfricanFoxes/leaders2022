@@ -1,15 +1,28 @@
-# [ Vue + Vite + Leaflet ]
-
-## Installation
-
+# Front 
 <ul>
+### <li>Vue</li>
+### <li>Vite</li>
+### <li>Leaflet</li>
+### <li>Axios</li>
+### <li>Cors</li>
+### <li>dotenv</li>
+### <li>h3-js</li>
+### <li>rbush</li>
+</ul>
 
-##### <li> Install node modules ``npm install`` </li>
+# Backend
+<ul>
+### <li>Node.js</li>
+### <li>Express</li>
+### <li>modgodb</li>
+### <li>body-parser</li>
+</ul>
 
-##### <li> Set up routes in ``.env.sample``  </li>
-
-##### <li> Rename the ``.env.sample`` file to ``.env.local`` </li>
-
-##### <li> Run the project with ``npm run dev`` </li>
-
+# ML model
+<ul>
+### <li>Python</li>
+### <li>Pandas</li>
+### <li>GeoPandas</li>
+### <li>TensorFlow</li>
+### <li>Scikitlearn</li>
 </ul>
